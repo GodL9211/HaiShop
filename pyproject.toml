@@ -5,12 +5,16 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "cachetools>=6.0.0",
     "celery>=5.5.3",
     "django==5.2",
+    "django-redis>=5.4.0",
     "djangorestframework>=3.16.0",
+    "hiredis>=3.2.1",
     "loguru>=0.7.3",
     "mysqlclient>=2.2.7",
     "pydantic>=2.11.5",
     "pydantic-django>=0.1.1",
+    "python-dotenv>=1.1.0",
     "redis>=6.2.0",
 ]
