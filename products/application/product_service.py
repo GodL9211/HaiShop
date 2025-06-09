@@ -2,13 +2,15 @@
 商品应用服务。
 定义商品相关的应用层服务，处理命令和查询，协调领域层和基础设施层。
 """
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 from decimal import Decimal
+import logging
 
 from loguru import logger
 from core.domain import Money
 from core.infrastructure.transaction import TransactionManager
 from core.infrastructure.cache import CacheService
+from core.domain.exceptions import EntityNotFoundException
 
 from products.domain.services import ProductService
 from products.domain.repositories import ProductRepository, CategoryRepository
@@ -874,7 +876,7 @@ class ProductApplicationService:
                 # 获取要删除的分类
                 category = self.category_repository.get_by_id(str(command.id))
                 if not category:
-                    raise ValueError(f"分类不存在: ID={command.id}")
+                    raise EntityNotFoundException("分类", command.id)
                 
                 # 检查是否有子分类
                 children = self.category_repository.get_children(str(command.id))

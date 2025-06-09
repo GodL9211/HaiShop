@@ -97,5 +97,5 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 20,
-    'EXCEPTION_HANDLER': 'products.api.exception_handlers.api_exception_handler',
+    'EXCEPTION_HANDLER': 'core.infrastructure.exception_handler.unified_exception_handler',
 } 
